@@ -1,0 +1,5 @@
+# Initialize Jira PostgreSQL database
+gosu postgres postgres --single <<- EOSQL
+	CREATE ROLE $JIRA_DB_USER WITH LOGIN PASSWORD '$JIRA_DB_PASS' VALID UNTIL 'infinity';
+	CREATE DATABASE $JIRA_DB_NAME WITH ENCODING 'UNICODE' LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0;
+EOSQL
